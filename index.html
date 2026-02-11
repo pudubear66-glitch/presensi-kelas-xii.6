@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelas XII.6 SMAN 1 Magetan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Quicksand', sans-serif;
+    }
+    .font-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(255, 182, 193, 0.8); }
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    .animate-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    .gradient-animated {
+      background-size: 200% 200%;
+      animation: gradient-shift 5s ease infinite;
+    }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+    .nav-item {
+      transition: all 0.2s ease;
+    }
+    .nav-item:hover {
+      transform: scale(1.05);
+    }
+    .nav-item.active {
+      background: linear-gradient(135deg, #FF6B9D 0%, #FFB347 100%);
+      color: white;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF0F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #FF6B9D, #FFB347);
+      border-radius: 10px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <script>
+  function showPage(page) {
+    document.querySelectorAll('.page-content').forEach(p => {
+      p.classList.add('hidden');
+    });
+
+    document.getElementById('page-' + page).classList.remove('hidden');
+
+    document.querySelectorAll('.nav-item').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    document.querySelector(`[data-page="${page}"]`).classList.add('active');
+  }
+</script>
+ <body class="h-full overflow-auto">
+  <div id="app" class="min-h-full w-full bg-gradient-to-br from-pink-50 via-orange-50 to-yellow-50 relative overflow-hidden"><!-- Decorative Background Elements -->
+   <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-pink-200 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+   <div class="absolute top-40 right-0 w-80 h-80 bg-gradient-to-bl from-orange-200 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" style="animation-delay: 2s;"></div>
+   <div class="absolute -bottom-32 left-1/2 w-72 h-72 bg-gradient-to-tr from-yellow-200 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" style="animation-delay: 4s;"></div><!-- Pattern Overlay -->
+   <div class="absolute inset-0 opacity-5">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs>
+      <pattern id="stars" patternunits="userSpaceOnUse" width="50" height="50">
+       <circle cx="10" cy="10" r="1.5" fill="#FFB347" />
+       <circle cx="40" cy="20" r="1" fill="#FF6B9D" />
+       <circle cx="25" cy="35" r="1.5" fill="#FFB347" />
+       <circle cx="45" cy="40" r="1" fill="#FF6B9D" />
+      </pattern>
+     </defs> <rect width="100%" height="100%" fill="url(#stars)" />
+    </svg>
+   </div>
+   <style>
+      @keyframes blob {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+      }
+      .animate-blob {
+        animation: blob 7s infinite;
+      }
+    </style><!-- Header -->
+   <header id="header" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-lg border-b-4 border-pink-300 relative">
+    <div class="max-w-7xl mx-auto px-4 py-3 relative z-10">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-orange-400 flex items-center justify-center text-white font-bold text-lg shadow-lg animate-glow">
+        <img src="https://lh3.googleusercontent.com/d/1R7felO2akPCLMoXJRZ82rvDagDFV2FXz" class="w-10 h-10 rounded-full object-cover"/>
+
+       </div>
+       <div>
+        <h1 id="header-title" class="font-heading font-bold text-xl bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent">Kelas XII.6</h1>
+        <p id="header-school" class="text-xs text-gray-500">SMAN 1 Magetan</p>
+       </div>
+      </div>
+      <div class="flex items-center gap-2"><span class="text-2xl">🌸</span> <span class="text-2xl animate-float">✨</span> <span class="text-2xl">🎀</span>
+      </div>
+     </div>
+    </div>
+   </header><!-- Navigation -->
+   <nav class="sticky top-[76px] z-40 bg-white/70 backdrop-blur-sm shadow-md">
+    <div class="max-w-7xl mx-auto px-2 py-2">
+     <div class="flex overflow-x-auto gap-2 pb-1 scrollbar-hide"><button onclick="showPage('beranda')" class="nav-item active flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700" data-page="beranda"> 🏠 Beranda </button> <button onclick="showPage('struktur')" class="nav-item flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700" data-page="struktur"> 👥 Struktur </button> <button onclick="showPage('anggota')" class="nav-item flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700" data-page="anggota"> 📋 Anggota </button> <button onclick="showPage('presensi')" class="nav-item flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700" data-page="presensi"> ✅ Presensi </button> <button onclick="showPage('visimisi')" class="nav-item flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700" data-page="visimisi"> 🎯 Visi Misi </button> <button onclick="showPage('tentang')" class="nav-item flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700" data-page="tentang"> ℹ️ Tentang </button>
+     </div>
+    </div>
+   </nav><!-- Main Content -->
+   <main class="max-w-7xl mx-auto px-4 py-6 relative z-10"><!-- Beranda Page -->
+    <section id="page-beranda" class="page-content">
+     <div class="text-center mb-8">
+      <div class="relative inline-block">
+       <div class="w-64 h-64 mx-auto rounded-3xl bg-gradient-to-br from-pink-300 via-orange-300 to-yellow-300 gradient-animated p-2 shadow-2xl animate-glow">
+        <div class="w-full h-full rounded-2xl bg-white flex items-center justify-center overflow-hidden">
+         <div class="w-full h-full overflow-hidden rounded-2xl">
+  <img
+    src="https://lh3.googleusercontent.com/d/1R7felO2akPCLMoXJRZ82rvDagDFV2FXz"
+    alt="Foto Kelas"
+    class="w-full h-full object-cover object-center"
+  />
+</div>
+
+        </div>
+       </div>
+       <div class="absolute -top-4 -right-4 text-4xl animate-float">
+        🌟
+       </div>
+       <div class="absolute -bottom-2 -left-4 text-3xl animate-float" style="animation-delay: 0.5s;">
+        🎀
+       </div>
+      </div>
+     </div>
+     <div class="text-center space-y-4 mb-8">
+      <h2 id="welcome-title" class="font-heading font-extrabold text-4xl md:text-5xl bg-gradient-to-r from-pink-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">Selamat Datang di Kelas XII.6</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">✨ Bersama kita belajar, bersama kita berprestasi! ✨</p>
+      <div class="flex justify-center gap-4 flex-wrap"><span class="px-4 py-2 bg-pink-100 text-pink-600 rounded-full text-sm font-semibold">🎓 SMAN 1 Magetan</span> <span class="px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">📚 Tahun Ajaran 2024/2025</span>
+      </div>
+     </div><!-- Quick Stats -->
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="card-hover bg-gradient-to-br from-pink-400 to-pink-500 rounded-2xl p-4 text-white shadow-lg">
+       <div class="text-3xl mb-2">
+        👥
+       </div>
+       <div class="text-2xl font-bold" id="stat-anggota">
+        35
+       </div>
+       <div class="text-sm opacity-90">
+        Anggota
+       </div>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl p-4 text-white shadow-lg">
+       <div class="text-3xl mb-2">
+        🏆
+       </div>
+       <div class="text-2xl font-bold" id="stat-prestasi">
+        0
+       </div>
+       <div class="text-sm opacity-90">
+        Prestasi
+       </div>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl p-4 text-white shadow-lg">
+       <div class="text-3xl mb-2">
+        📢
+       </div>
+       <div class="text-2xl font-bold" id="stat-pengumuman">
+        0
+       </div>
+       <div class="text-sm opacity-90">
+        Pengumuman
+       </div>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-green-400 to-green-500 rounded-2xl p-4 text-white shadow-lg">
+       <div class="text-3xl mb-2">
+        💰
+       </div>
+       <div class="text-2xl font-bold" id="stat-kas">
+        Rp 0
+       </div>
+       <div class="text-sm opacity-90">
+        Saldo Kas
+       </div>
+      </div>
+     </div><!-- Recent Activities -->
+     <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-pink-100">
+      <h3 class="font-heading font-bold text-xl text-gray-800 mb-4 flex items-center gap-2"><span class="text-2xl">📌</span> Aktivitas Terbaru</h3>
+      <div id="recent-activities" class="space-y-3">
+       <div class="text-center py-8 text-gray-400"><span class="text-4xl mb-2 block">🌸</span>
+        <p>Belum ada aktivitas terbaru</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Struktur Page -->
+    <section id="page-struktur" class="page-content hidden">
+     <div class="text-center mb-8">
+      <h2 class="font-heading font-bold text-3xl bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent mb-2">👥 Struktur Organisasi Kelas</h2>
+      <p class="text-gray-500">Pengurus Kelas XII.6 Tahun Ajaran 2025/2026</p>
+     </div>
+     <div class="grid gap-6"><!-- Wali Kelas -->
+      <div class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-6 text-white shadow-xl">
+       <div class="flex items-center gap-4">
+        <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center text-4xl">
+         👨‍🏫
+        </div>
+        <div>
+         <p class="text-sm opacity-80">Wali Kelas</p>
+         <h3 class="font-heading font-bold text-2xl">Abi Marza Ramadhan, S.Pd</h3>
+        </div>
+       </div>
+      </div><!-- Ketua & Wakil -->
+      <div class="grid md:grid-cols-2 gap-4">
+       <div class="card-hover bg-gradient-to-br from-pink-400 to-pink-500 rounded-2xl p-5 text-white shadow-lg">
+        <div class="flex items-center gap-3">
+         <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-2xl">
+          🧑🏻‍💻
+         </div>
+         <div>
+          <p class="text-xs opacity-80">Ketua Kelas</p>
+          <h4 class="font-bold text-lg">Narotama Destano Wibowo</h4>
+         </div>
+        </div>
+       </div>
+       <div class="card-hover bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl p-5 text-white shadow-lg">
+        <div class="flex items-center gap-3">
+         <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-2xl">
+          👨🏻‍💻
+         </div>
+         <div>
+          <p class="text-xs opacity-80">Wakil Ketua</p>
+          <h4 class="font-bold text-lg">Wahyu Widyatmoko Wuril Atmojo</h4>
+         </div>
+        </div>
+       </div>
+      </div><!-- Other Positions -->
+      <div class="grid md:grid-cols-3 gap-4">
+       <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-pink-200">
+        <div class="text-center">
+         <div class="w-12 h-12 mx-auto rounded-full bg-pink-100 flex items-center justify-center text-xl mb-2">
+          📝
+         </div>
+         <p class="text-xs text-gray-500">Sekretaris 1</p>
+         <h4 class="font-bold text-gray-800">Berlian Anisa Nur Ayu Setyo Putri</h4>
+        </div>
+       </div>
+       <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-orange-200">
+        <div class="text-center">
+         <div class="w-12 h-12 mx-auto rounded-full bg-orange-100 flex items-center justify-center text-xl mb-2">
+          📋
+         </div>
+         <p class="text-xs text-gray-500">Sekretaris 2</p>
+         <h4 class="font-bold text-gray-800">Nadya Evina Syarotusyta</h4>
+        </div>
+       </div>
+       <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-yellow-200">
+        <div class="text-center">
+         <div class="w-12 h-12 mx-auto rounded-full bg-yellow-100 flex items-center justify-center text-xl mb-2">
+          💵
+         </div>
+         <p class="text-xs text-gray-500">Bendahara 1</p>
+         <h4 class="font-bold text-gray-800">Olyvia Deska Valentina</h4>
+        </div>
+       </div>
+       <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-green-200">
+        <div class="text-center">
+         <div class="w-12 h-12 mx-auto rounded-full bg-green-100 flex items-center justify-center text-xl mb-2">
+          💰
+         </div>
+         <p class="text-xs text-gray-500">Bendahara 2</p>
+         <h4 class="font-bold text-gray-800">Najwa Athaillah Novirani</h4>
+        </div>
+       </div>
+       <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-blue-200">
+        <div class="text-center">
+         <div class="w-12 h-12 mx-auto rounded-full bg-blue-100 flex items-center justify-center text-xl mb-2">
+          📸
+         </div>
+         <p class="text-xs text-gray-500">Humas PA</p>
+         <h4 class="font-bold text-gray-800">M. Sultan Fattah Al Mughni</h4>
+        </div>
+       </div>
+       <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-purple-200">
+        <div class="text-center">
+         <div class="w-12 h-12 mx-auto rounded-full bg-purple-100 flex items-center justify-center text-xl mb-2">
+          📱
+         </div>
+         <p class="text-xs text-gray-500">Humas PI</p>
+         <h4 class="font-bold text-gray-800">Arin Destyana Putri</h4>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Anggota Page -->
+    <section id="page-anggota" class="page-content hidden">
+     <div class="text-center mb-8">
+      <h2 class="font-heading font-bold text-3xl bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent mb-2">📋 Daftar Anggota Kelas</h2>
+      <p class="text-gray-500">Siswa-siswi Kelas XII.6 SMAN 1 Magetan</p>
+     </div>
+     <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-pink-100">
+      <div class="overflow-x-auto">
+       <table class="w-full">
+        <thead>
+         <tr class="bg-gradient-to-r from-pink-400 to-orange-400 text-white">
+          <th class="px-4 py-3 rounded-tl-xl text-left">No Urut</th>
+          <th class="px-4 py-3 text-left">Nama Lengkap</th>
+          <th class="px-4 py-3 text-left">NIS</th>
+          <th class="px-4 py-3 rounded-tr-xl text-left">L/P</th>
+         </tr>
+        </thead>
+        <tbody id="anggota-table">
+        <tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">1</td>
+  <td class="px-4 py-3 font-medium">Aaron Ghazalah Yuma Prabawa</td>
+  <td class="px-4 py-3 text-gray-500">18925</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">2</td>
+  <td class="px-4 py-3 font-medium">Adil Fahda Fadhilah</td>
+  <td class="px-4 py-3 text-gray-500">18928</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">3</td>
+  <td class="px-4 py-3 font-medium">Adimas Muhammad Syauqi</td>
+  <td class="px-4 py-3 text-gray-500">18930</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">4</td>
+  <td class="px-4 py-3 font-medium">Agatha Prahelga Ardhiyan Praptama</td>
+  <td class="px-4 py-3 text-gray-500">18935</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">5</td>
+  <td class="px-4 py-3 font-medium">Andika Wahyu Putra Jadianto</td>
+  <td class="px-4 py-3 text-gray-500">18961</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">6</td>
+  <td class="px-4 py-3 font-medium">Arin Destyana Putri</td>
+  <td class="px-4 py-3 text-gray-500">19642</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">7</td>
+  <td class="px-4 py-3 font-medium">Azzeza Dellarosa Tiara Laksandy</td>
+  <td class="px-4 py-3 text-gray-500">18994</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">8</td>
+  <td class="px-4 py-3 font-medium">Berlian Anisa Nur Ayu Setyo Putri</td>
+  <td class="px-4 py-3 text-gray-500">18998</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">9</td>
+  <td class="px-4 py-3 font-medium">Chanya Mawar Ramadhani</td>
+  <td class="px-4 py-3 text-gray-500">19006</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">10</td>
+  <td class="px-4 py-3 font-medium">Citra Pramestiya Pratiwi</td>
+  <td class="px-4 py-3 text-gray-500">19011</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">11</td>
+  <td class="px-4 py-3 font-medium">Fiandra Rizky Kurniawan</td>
+  <td class="px-4 py-3 text-gray-500">19063</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">12</td>
+  <td class="px-4 py-3 font-medium">Ilham Prakoso Sakti</td>
+  <td class="px-4 py-3 text-gray-500">19080</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">13</td>
+  <td class="px-4 py-3 font-medium">Intan Pipit Rahma Wati</td>
+  <td class="px-4 py-3 text-gray-500">19082</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">14</td>
+  <td class="px-4 py-3 font-medium">Jodiaz Brilyanda Septriva Ramadhan</td>
+  <td class="px-4 py-3 text-gray-500">19091</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">15</td>
+  <td class="px-4 py-3 font-medium">Luthfiatus Sadiyah Ramadhani</td>
+  <td class="px-4 py-3 text-gray-500">19116</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">16</td>
+  <td class="px-4 py-3 font-medium">Mahdalena Zaskia Septianingrum</td>
+  <td class="px-4 py-3 text-gray-500">19118</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">17</td>
+  <td class="px-4 py-3 font-medium">Mochammad Zandra Nurhiezandy</td>
+  <td class="px-4 py-3 text-gray-500">19131</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">18</td>
+  <td class="px-4 py-3 font-medium">Mohammad Ardi Zaillani</td>
+  <td class="px-4 py-3 text-gray-500">19132</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">19</td>
+  <td class="px-4 py-3 font-medium">Muhammad Sultan Fattah Al Mughni</td>
+  <td class="px-4 py-3 text-gray-500">19148</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">20</td>
+  <td class="px-4 py-3 font-medium">Nadya Evina Syarotusyta</td>
+  <td class="px-4 py-3 text-gray-500">19159</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">21</td>
+  <td class="px-4 py-3 font-medium">Nailah Syaikha Wahyu Purwanto</td>
+  <td class="px-4 py-3 text-gray-500">19166</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">22</td>
+  <td class="px-4 py-3 font-medium">Najwa Athaillah Novirani</td>
+  <td class="px-4 py-3 text-gray-500">19167</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">23</td>
+  <td class="px-4 py-3 font-medium">Narotama Destano Wibowo</td>
+  <td class="px-4 py-3 text-gray-500">19173</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">24</td>
+  <td class="px-4 py-3 font-medium">Octavia Putri Azzahra</td>
+  <td class="px-4 py-3 text-gray-500">19188</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">25</td>
+  <td class="px-4 py-3 font-medium">Olyvia Deska Valentina</td>
+  <td class="px-4 py-3 text-gray-500">19190</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">26</td>
+  <td class="px-4 py-3 font-medium">Putri Jelita Cucu Murdianti</td>
+  <td class="px-4 py-3 text-gray-500">19193</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">27</td>
+  <td class="px-4 py-3 font-medium">Rohmania Syahwa Nisa</td>
+  <td class="px-4 py-3 text-gray-500">19226</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">28</td>
+  <td class="px-4 py-3 font-medium">Satria Maskur Fajar Dwi Lindianto</td>
+  <td class="px-4 py-3 text-gray-500">19231</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">29</td>
+  <td class="px-4 py-3 font-medium">Sevina Ayu Pramita</td>
+  <td class="px-4 py-3 text-gray-500">19235</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">30</td>
+  <td class="px-4 py-3 font-medium">Shaffa Tsurraya Sugiharto</td>
+  <td class="px-4 py-3 text-gray-500">19237</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">31</td>
+  <td class="px-4 py-3 font-medium">Sherly Rosita Ningtyas</td>
+  <td class="px-4 py-3 text-gray-500">19241</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">32</td>
+  <td class="px-4 py-3 font-medium">Tyara Yustina Hapsari</td>
+  <td class="px-4 py-3 text-gray-500">19262</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">33</td>
+  <td class="px-4 py-3 font-medium">Wahyu Widyatmoko Wuril Atmojo</td>
+  <td class="px-4 py-3 text-gray-500">19270</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">L</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">34</td>
+  <td class="px-4 py-3 font-medium">Yasmin Aqila Loma</td>
+  <td class="px-4 py-3 text-gray-500">19273</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+<tr class="border-b border-pink-100 hover:bg-pink-50 transition-colors">
+  <td class="px-4 py-3">35</td>
+  <td class="px-4 py-3 font-medium">Zhayra Vidyani Andita</td>
+  <td class="px-4 py-3 text-gray-500">19279</td>
+  <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">P</span></td>
+</tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="mt-4 text-center text-gray-500 text-sm"><span class="text-pink-500">💝</span> Total: 35 Siswa (13 Laki-laki, 22 Perempuan)
+      </div>
+     </div>
+    </section><!-- Presensi Page -->
+    <section id="page-presensi" class="page-content hidden">
+     <div class="text-center mb-8">
+      <h2 class="font-heading font-bold text-3xl bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent mb-2">✅ Presensi Kelas</h2>
+      <p class="text-gray-500">Catatan kehadiran siswa</p>
+     </div><!-- Add Attendance Form -->
+     <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-pink-100 mb-6">
+      <h3 class="font-heading font-bold text-lg text-gray-800 mb-4 flex items-center gap-2"><span>📝</span> Catat Presensi</h3>
+      <form id="presensi-form" class="space-y-4">
+       <div class="grid md:grid-cols-3 gap-4">
+        <div><label for="presensi-date" class="block text-sm font-medium text-gray-700 mb-1">Tanggal</label> <input type="date" id="presensi-date" class="w-full px-4 py-2 rounded-xl border-2 border-pink-200 focus:border-pink-400 focus:outline-none">
+        </div>
+        <div><label for="presensi-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Siswa</label> <input type="text" id="presensi-name" placeholder="Nama siswa" class="w-full px-4 py-2 rounded-xl border-2 border-pink-200 focus:border-pink-400 focus:outline-none">
+        </div>
+        <div><label for="presensi-status" class="block text-sm font-medium text-gray-700 mb-1">Status</label> <select id="presensi-status" class="w-full px-4 py-2 rounded-xl border-2 border-pink-200 focus:border-pink-400 focus:outline-none"> <option value="hadir">✅ Hadir</option> <option value="izin">📋 Izin</option> <option value="sakit">🏥 Sakit</option> <option value="alpha">❌ Alpha</option> </select>
+        </div>
+       </div><button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-orange-500 text-white font-bold py-3 rounded-xl hover:opacity-90 transition-opacity"> 📊 Simpan Presensi </button>
+      </form>
+     </div><!-- Attendance Stats -->
+     <div class="grid grid-cols-4 gap-3 mb-6">
+      <div class="bg-green-100 rounded-2xl p-4 text-center">
+       <div class="text-2xl mb-1">
+        ✅
+       </div>
+       <div id="presensi-hadir" class="font-bold text-green-600 text-xl">
+        0
+       </div>
+       <div class="text-xs text-green-600">
+        Hadir
+       </div>
+      </div>
+      <div class="bg-blue-100 rounded-2xl p-4 text-center">
+       <div class="text-2xl mb-1">
+        📋
+       </div>
+       <div id="presensi-izin" class="font-bold text-blue-600 text-xl">
+        0
+       </div>
+       <div class="text-xs text-blue-600">
+        Izin
+       </div>
+      </div>
+      <div class="bg-yellow-100 rounded-2xl p-4 text-center">
+       <div class="text-2xl mb-1">
+        🏥
+       </div>
+       <div id="presensi-sakit" class="font-bold text-yellow-600 text-xl">
+        0
+       </div>
+       <div class="text-xs text-yellow-600">
+        Sakit
+       </div>
+      </div>
+      <div class="bg-red-100 rounded-2xl p-4 text-center">
+       <div class="text-2xl mb-1">
+        ❌
+       </div>
+       <div id="presensi-alpha" class="font-bold text-red-600 text-xl">
+        0
+       </div>
+       <div class="text-xs text-red-600">
+        Alpha
+       </div>
+      </div>
+     </div><!-- Attendance History -->
+     <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-pink-100">
+      <h3 class="font-heading font-bold text-lg text-gray-800 mb-4 flex items-center gap-2"><span>📅</span> Riwayat Presensi</h3>
+      <div id="presensi-history" class="space-y-3">
+       <div class="text-center py-8 text-gray-400"><span class="text-4xl mb-2 block">📋</span>
+        <p>Belum ada data presensi</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Visi Misi Page -->
+    <section id="page-visimisi" class="page-content hidden">
+     <div class="text-center mb-8">
+      <h2 class="font-heading font-bold text-3xl bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent mb-2">🎯 Visi &amp; Misi Kelas</h2>
+      <p class="text-gray-500">Arah dan tujuan bersama Kelas XII.6</p>
+     </div><!-- Visi -->
+     <div class="bg-gradient-to-br from-pink-400 via-pink-500 to-rose-500 rounded-3xl p-8 text-white shadow-xl mb-6">
+      <div class="text-center">
+       <div class="inline-block bg-white/20 rounded-full p-4 mb-4"><span class="text-4xl">🌟</span>
+       </div>
+       <h3 class="font-heading font-bold text-2xl mb-4">VISI</h3>
+       <p class="text-lg leading-relaxed max-w-2xl mx-auto">"Menjadi kelas yang unggul dalam prestasi akademik dan non-akademik, berkarakter mulia, serta tetap menjunjung tinggi nilai-nilai kebersamaan dan kekeluargaan  demi mewujudkan gerbang kesuksesan masa depan."</p>
+      </div>
+     </div><!-- Misi -->
+     <div class="bg-white rounded-3xl p-8 shadow-xl border-2 border-pink-100">
+      <div class="text-center mb-6">
+       <div class="inline-block bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full p-4 mb-4"><span class="text-4xl">🚀</span>
+       </div>
+       <h3 class="font-heading font-bold text-2xl text-gray-800">MISI</h3>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+       <div class="flex items-start gap-3 p-4 bg-pink-50 rounded-2xl"><span class="text-2xl">📚</span>
+        <p class="text-gray-700">Meningkatkan prestasi akademik melalui belajar kelompok dan diskusi aktif</p>
+       </div>
+       <div class="flex items-start gap-3 p-4 bg-orange-50 rounded-2xl"><span class="text-2xl">🤝</span>
+        <p class="text-gray-700">Membangun solidaritas dan kekompakan antar anggota kelas</p>
+       </div>
+       <div class="flex items-start gap-3 p-4 bg-yellow-50 rounded-2xl"><span class="text-2xl">🏆</span>
+        <p class="text-gray-700">Aktif berpartisipasi dalam kegiatan ekstrakurikuler dan lomba</p>
+       </div>
+       <div class="flex items-start gap-3 p-4 bg-green-50 rounded-2xl"><span class="text-2xl">💪</span>
+        <p class="text-gray-700">Menjaga kedisiplinan dan kebersihan kelas</p>
+       </div>
+       <div class="flex items-start gap-3 p-4 bg-blue-50 rounded-2xl"><span class="text-2xl">🌟</span>
+        <p class="text-gray-700">Mengembangkan bakat dan potensi setiap anggota kelas</p>
+       </div>
+       <div class="flex items-start gap-3 p-4 bg-purple-50 rounded-2xl"><span class="text-2xl">❤️</span>
+        <p class="text-gray-700">Menciptakan suasana kelas yang nyaman dan menyenangkan</p>
+       </div>
+      </div>
+     </div><!-- Motto -->
+     <div class="mt-6 bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 rounded-3xl p-6 text-white shadow-xl text-center">
+      <h4 class="font-heading font-bold text-xl mb-2">💫 MOTTO KELAS</h4>
+      <p class="text-2xl font-bold">"Bersama Berprestasi, Bersama Bahagia!"</p>
+     </div>
+    </section><!-- Tentang Page -->
+    <section id="page-tentang" class="page-content hidden">
+     <div class="text-center mb-8">
+      <h2 class="font-heading font-bold text-3xl bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent mb-2">Tentang Kelas</h2>
+      <p class="text-gray-500">Mengenal lebih dekat Kelas XII.6</p>
+     </div><!-- About Card -->
+     <div class="bg-white rounded-3xl p-8 shadow-xl border-2 border-pink-100 mb-6">
+      <div class="flex flex-col md:flex-row items-center gap-6">
+       <div class="w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-pink-400 to-orange-400 shadow-lg animate-glow">
+  <img
+    src="https://lh3.googleusercontent.com/d/1R7felO2akPCLMoXJRZ82rvDagDFV2FXz"
+    alt="Foto Kelas"
+    class="w-full h-full object-cover object-center"
+  />
+</div>
+
+
+       </div>
+       <div class="flex-1 text-center md:text-left">
+        <h3 class="font-heading font-bold text-2xl text-gray-800 mb-2">Kelas XII.6</h3>
+        <p class="text-gray-600 mb-4">Kelas XII.6 adalah satu-satunya kelas peminatan Biologi, Kimia, Matematika Tingkat Lanjut, dan Informatika di SMAN 1 Magetan. Dengan 35 siswa yang penuh semangat dan kreativitas. Kelas XII.6 juga telah meraih Juara Umum kelas XII pada KOMPAK 2 tahun berturut-turut. </p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-2"><span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">🎓 IPA</span> <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">📍XII.6 </span> <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">📅 2025/2026</span>
+        </div>
+       </div>
+      </div>
+     </div><!-- School Info -->
+     <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-6 text-white shadow-xl mb-6">
+      <h3 class="font-heading font-bold text-xl mb-4 flex items-center gap-2"><span>🏫</span> Tentang Sekolah</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+       <div>
+        <p class="text-sm opacity-80">Nama Sekolah</p>
+        <p class="font-bold">SMA Negeri 1 Magetan</p>
+       </div>
+       <div>
+        <p class="text-sm opacity-80">Alamat</p>
+        <p class="font-bold">Jl. Monginsidi No. 24, Selosari, Kec. Magetan, Kab. Magetan</p>
+       </div>
+       <div>
+        <p class="text-sm opacity-80">Akreditasi</p>
+        <p class="font-bold">A (Unggul)</p>
+       </div>
+       <div>
+        <p class="text-sm opacity-80">NPSN</p>
+        <p class="font-bold">20509318</p>
+       </div>
+      </div>
+     </div><!-- Class Stats -->
+     <div class="grid md:grid-cols-3 gap-4 mb-6">
+      <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-pink-200 text-center">
+       <div class="w-16 h-16 mx-auto rounded-full bg-pink-100 flex items-center justify-center text-3xl mb-3">
+        👦
+       </div>
+       <h4 class="font-bold text-2xl text-gray-800">13</h4>
+       <p class="text-gray-500">Siswa Laki-laki</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-orange-200 text-center">
+       <div class="w-16 h-16 mx-auto rounded-full bg-orange-100 flex items-center justify-center text-3xl mb-3">
+        👧
+       </div>
+       <h4 class="font-bold text-2xl text-gray-800">22</h4>
+       <p class="text-gray-500">Siswi Perempuan</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-yellow-200 text-center">
+       <div class="w-16 h-16 mx-auto rounded-full bg-yellow-100 flex items-center justify-center text-3xl mb-3">
+        📚
+       </div>
+       <h4 class="font-bold text-2xl text-gray-800">14</h4>
+       <p class="text-gray-500">Mata Pelajaran</p>
+      </div>
+     </div><!-- Contact Info -->
+     <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-pink-100">
+      <h3 class="font-heading font-bold text-lg text-gray-800 mb-4 flex items-center gap-2"><span>📱</span> Kontak Kelas</h3>
+      <div class="grid md:grid-cols-2 gap-4"><a href="https://www.instagram.com/onceseiis?igsh=MXA3djgzNGF5M3Bscw==" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 bg-gradient-to-br from-pink-50 to-orange-50 rounded-xl hover:shadow-lg hover:scale-105 transition-all cursor-pointer"> <span class="text-2xl">📸</span>
+        <div>
+         <p class="text-xs text-gray-500">Instagram</p>
+         <p class="font-semibold text-gray-800">@onceseiis</p>
+        </div></a>
+      </div>
+     </div>
+    </section>
+   </main><!-- Footer -->
+   <footer class="bg-gradient-to-r from-pink-500 via-orange-500 to-yellow-500 text-white py-6 mt-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+     <div class="flex justify-center gap-3 mb-3"><span class="text-2xl animate-float">🌸</span> <span class="text-2xl animate-float" style="animation-delay: 0.2s;">✨</span> <span class="text-2xl animate-float" style="animation-delay: 0.4s;">🎀</span>
+     </div>
+     <p class="font-heading font-bold text-lg">Kelas XII.6 SMAN 1 Magetan</p>
+     <p class="text-sm opacity-80">© 2026 - Made with 💝 by Berlian Anisa XII.6</p>
+    </div>
+   </footer><!-- Toast Container -->
+   <div id="toast-container" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
+  </div>
+  <script>
+document.getElementById("presensi-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const tanggal = document.getElementById("presensi-date").value;
+  const nama = document.getElementById("presensi-name").value;
+  const status = document.getElementById("presensi-status").value;
+
+  if (!tanggal || !nama) {
+    alert("Tanggal dan nama wajib diisi!");
+    return;
+  }
+
+  google.script.run
+    .withSuccessHandler(() => {
+      alert("Presensi berhasil disimpan ✅");
+      document.getElementById("presensi-form").reset();
+    })
+    .withFailureHandler(err => {
+      alert("Gagal menyimpan ❌");
+      console.error(err);
+    })
+    .simpanPresensi(tanggal, nama, status);
+});
+</script>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbxISCN-j5e7HIrgatqv33ABa10fjj6m0o4xEyurDR9rjccc6pNTsBFiD0QvJ-HtmskzPA/exec";
+
+document.getElementById("presensi-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const date = document.getElementById("presensi-date").value;
+  const name = document.getElementById("presensi-name").value;
+  const status = document.getElementById("presensi-status").value;
+
+  try {
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        tanggal: date,
+        nama: name,
+        status: status
+      })
+    });
+
+    alert("✅ Presensi berhasil dikirim!");
+    document.getElementById("presensi-form").reset();
+
+  } catch (error) {
+    alert("❌ Gagal mengirim data. Pastikan URL Web App sudah benar dan di-deploy sebagai 'Anyone'.");
+  }
+});
+</script>
+
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cb2dd02205bb5be',t:'MTc3MDYzNDgyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ 
+</body>
+</html>
